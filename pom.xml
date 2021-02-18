@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>fr.cimut.starterspringboot</groupId>
+    <artifactId>bom</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <modules>
+        <module>cimut-starterSoapWebservice</module>
+    </modules>
+    <packaging>pom</packaging>
+
+    <name>Starter Spring Boot Project</name>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.4.2</version>
+    </parent>
+
+    <properties>
+        <junit.version>4.13.2</junit.version>
+        <jacoco.version>0.8.6</jacoco.version>
+    </properties>
+
+    <scm>
+        <connection>scm:git:git://github.com/pierrecimut/starterspringboot.git</connection>
+        <developerConnection>scm:git:ssh://git@github.com/pierrecimut/starterspringboot.git</developerConnection>
+        <url>https://github.com/pierrecimut/starterspringboot</url>
+    </scm>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-test</artifactId>
+                <scope>test</scope>
+                <exclusions>
+                    <exclusion>
+                        <!-- Allows backward compatibility with Junit 4 and Junit 3 -->
+                        <groupId>org.junit.vintage</groupId>
+                        <artifactId>junit-vintage-engine</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <plugins>
+            <plugin>
+                <!-- spring-boot-maven-plugin provides Spring Boot support in Apache Maven
+                Allows to
+                    package executable jar or war archives,
+                    run Spring Boot applications,
+                    build information,
+                    start Spring Boot application prior to running integration tests.
+                -->
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${jacoco.version}</version>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
